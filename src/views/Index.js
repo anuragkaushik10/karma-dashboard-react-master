@@ -1,334 +1,193 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.2.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
-// javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-// reactstrap components
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
-  Table,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2,
-} from "variables/charts.js";
+import { chartOptions, parseOptions } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Container, Row } from "reactstrap";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
+import DarkCard from "./examples/DarkCard";
+const iconList = Object.keys(Icons)
+
+  .filter((key) => key !== "fas" && key !== "prefix")
+
+  .map((icon) => Icons[icon]);
+
+library.add(...iconList);
 const Index = (props) => {
-  const [activeNav, setActiveNav] = useState(1);
-  const [chartExample1Data, setChartExample1Data] = useState("data1");
+  const data = [
+    {
+      id: 1,
+      data: [
+        {
+          id: 1,
+          url: "xyz",
+          label: "Patient Registration",
+          icon: "fa-solid fa-hospital-user",
+        },
+        {
+          id: 3,
+          url: "xyz",
+          label: "Search Patient",
+          icon: "fa-solid fa-magnifying-glass-plus",
+        },
+      ],
+      label: "Patient",
+    },
+    {
+      id: 2,
+      data: [
+        {
+          id: 2,
+          url: "xyz",
+          label: "Create Prescription",
+          icon: "fa-solid fa-prescription",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Review Patients",
+          icon: "fa-solid fa-address-card",
+        },
+        {
+          id: 3,
+          url: "xyz",
+          label: "Repeat Patient",
+          icon: "fa-solid fa-repeat",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Doctor Details",
+          icon: "fa-solid fa-circle-info",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Search Prescription",
+          icon: "fa-solid fa-magnifying-glass",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Search Queue",
+          icon: "fa-solid fa-users",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Out Reach",
+          icon: "fa-solid fa-route",
+        },
+        {
+          id: 2,
+          url: "",
+          label: "Doctor Allocation",
+          icon: "fa-solid fa-user-doctor",
+        },
+      ],
+      label: "Consultation",
+    },
+    {
+      id: 5,
+      data: [
+        {
+          id: 1,
+          url: "xyz",
+          label: "Place Centre Order",
+          icon: "fa-solid fa-truck-medical",
+        },
+        {
+          id: 3,
+          url: "xyz",
+          label: "Confirm Order",
+          icon: "fa-solid fa-clipboard-check",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Search Order",
+          icon: "fa-solid fa-dolly",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Reconciliation",
+          icon: "fa-solid fa-reciept",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Medicine Details",
+          icon: "fa-solid fa-apple-whole",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Medicine Consumption",
+          icon: "fa-solid fa-apple-whole",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Pricing",
+          icon: "fa-solid fa-apple-whole",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Pricing Details",
+          icon: "fa-solid fa-apple-whole",
+        },
+      ],
+      label: "Inventory",
+    },
+    {
+      id: 4,
+      data: [
+        {
+          id: 1,
+          url: "xyz",
+          label: "Assign Roles",
+          icon: "fa-solid fa-apple-whole",
+        },
+        {
+          id: 3,
+          url: "xyz",
+          label: "Settings",
+          icon: "fa-solid fa-apple-whole",
+        },
+        {
+          id: 2,
+          url: "xyz",
+          label: "Logout",
+          icon: "fa-solid fa-apple-whole",
+        },
+      ],
+      label: "Admin",
+    },
+  ];
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
 
-  const toggleNavs = (e, index) => {
-    e.preventDefault();
-    setActiveNav(index);
-    setChartExample1Data("data" + index);
-  };
   return (
     <>
       <Header />
-      {/* Page content */}
-      <Container className="mt--7" fluid>
+      {/* {data.map((d) => (
+        <DarkCard key={d.id} desc={d.data}></DarkCard>
+      ))} */}
+      <Container className="main-card" fluid>
         <Row>
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="bg-gradient-default shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-light ls-1 mb-1">
-                      Overview
-                    </h6>
-                    <h2 className="text-white mb-0">Sales value</h2>
-                  </div>
-                  <div className="col">
-                    <Nav className="justify-content-end" pills>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 1,
-                          })}
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 1)}
-                        >
-                          <span className="d-none d-md-block">Month</span>
-                          <span className="d-md-none">M</span>
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames("py-2 px-3", {
-                            active: activeNav === 2,
-                          })}
-                          data-toggle="tab"
-                          href="#pablo"
-                          onClick={(e) => toggleNavs(e, 2)}
-                        >
-                          <span className="d-none d-md-block">Week</span>
-                          <span className="d-md-none">W</span>
-                        </NavLink>
-                      </NavItem>
-                    </Nav>
-                  </div>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Line
-                    data={chartExample1[chartExample1Data]}
-                    options={chartExample1.options}
-                    getDatasetAtEvent={(e) => console.log(e)}
-                  />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h6 className="text-uppercase text-muted ls-1 mb-1">
-                      Performance
-                    </h6>
-                    <h2 className="mb-0">Total orders</h2>
-                  </div>
-                </Row>
-              </CardHeader>
-              <CardBody>
-                {/* Chart */}
-                <div className="chart">
-                  <Bar
-                    data={chartExample2.data}
-                    options={chartExample2.options}
-                  />
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="mt-5">
-          <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">Page visits</h3>
-                  </div>
-                  <div className="col text-right">
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      See all
-                    </Button>
-                  </div>
-                </Row>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">/argon/</th>
-                    <td>4,569</td>
-                    <td>340</td>
-                    <td>
-                      <i className="fas fa-arrow-up text-success mr-3" /> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/index.html</th>
-                    <td>3,985</td>
-                    <td>319</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                      46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/charts.html</th>
-                    <td>3,513</td>
-                    <td>294</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                      36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/tables.html</th>
-                    <td>2,050</td>
-                    <td>147</td>
-                    <td>
-                      <i className="fas fa-arrow-up text-success mr-3" /> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">/argon/profile.html</th>
-                    <td>1,795</td>
-                    <td>190</td>
-                    <td>
-                      <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                      46,53%
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card>
-          </Col>
-          <Col xl="4">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">Social traffic</h3>
-                  </div>
-                  <div className="col text-right">
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      See all
-                    </Button>
-                  </div>
-                </Row>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Facebook</th>
-                    <td>1,480</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">60%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="60"
-                            barClassName="bg-gradient-danger"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Facebook</th>
-                    <td>5,480</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">70%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="70"
-                            barClassName="bg-gradient-success"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Google</th>
-                    <td>4,807</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">80%</span>
-                        <div>
-                          <Progress max="100" value="80" />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Instagram</th>
-                    <td>3,678</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">75%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="75"
-                            barClassName="bg-gradient-info"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">twitter</th>
-                    <td>2,645</td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">30%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="30"
-                            barClassName="bg-gradient-warning"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card>
-          </Col>
+          {data.map((d) => (
+            <DarkCard desc={d.data} id={d.id} label={d.label}></DarkCard>
+          ))}
         </Row>
       </Container>
     </>

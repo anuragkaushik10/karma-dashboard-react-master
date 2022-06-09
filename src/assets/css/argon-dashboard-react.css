@@ -16161,19 +16161,49 @@ button:focus, :focus {
   font-size: 1em;
   text-align: center;
 }
+
+.main-label{
+  color: white !important;
+  padding-top: 10px;
+  font-size: 1.3em;
+}
+/* #ff375f */
+.icons{
+  color: white;
+   font-size: 2.5em; 
+   padding-bottom: 5px;
+}
+
+.icons:hover{
+  color:#ff375f ;
+  /* transform: ; */
+  transition: 0.4s;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  cursor: pointer;
+}
+
+.small-grid-label{
+font-size: 0.6em;
+color: white;
+}
+.main-card{
+  margin-top: -4em;
+}
 @media all and (max-width:480px){
   .login-btn{
     width: 100%;
     display: block;
   }
   .login-header{
-    margin-top: 1em;
+    margin-top: 1px;
   }
   .copyright{
     font-size: 0.8em;
   }
+  .icons{
+    font-size: 3em;
+  }
 }
-
-.input-box{
-}
-/*# sourceMappingURL=argon-dashboard-react.css.map */
