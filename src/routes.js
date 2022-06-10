@@ -23,6 +23,7 @@ import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import PatientForm from "views/examples/PatientForm.js";
+import PatientRegistration from "views/examples/patient/PatientRegistration";
 var routes = [
   {
     path: "/index",
@@ -74,10 +75,10 @@ var routes = [
     layout: "/auth",
   },
   {
-    path: "/patient-form",
+    path: "/patient-registration",
     name: "Patient Form",
     icon: "ni ni-circle-08 text-pink",
-    component: PatientForm,
+    component: PatientRegistration,
     layout: "/admin",
   },
 ];

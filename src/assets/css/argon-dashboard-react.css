@@ -16194,6 +16194,15 @@ color: white;
 .main-card{
   margin-top: -4em;
 }
+
+.form-title{
+  font-size: 2em;
+}
+
+.form-center{
+
+  margin: 0 auto;
+}
 @media all and (max-width:480px){
   .login-btn{
     width: 100%;
@@ -16207,5 +16216,12 @@ color: white;
   }
   .icons{
     font-size: 2em;
+  }
+  .form-title{
+    font-size: 1.5em;
+    padding-top: 0;
+  }
+  .form-center{
+  
   }
 }

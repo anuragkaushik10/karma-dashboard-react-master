@@ -174,9 +174,6 @@ const Index = (props) => {
   return (
     <>
       <Header />
-      {/* {data.map((d) => (
-        <DarkCard key={d.id} desc={d.data}></DarkCard>
-      ))} */}
       <Container className="main-card" fluid>
         <Row>
           {data.map((d) => (
