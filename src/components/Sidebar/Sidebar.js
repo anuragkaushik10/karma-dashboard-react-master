@@ -187,7 +187,7 @@ const Sidebar = (props) => {
             </Row>
           </div>
           {/* Navigation */}
-          {/* <Nav navbar>{createLinks(routes)}</Nav> */}
+          <Nav navbar>{createLinks(routes)}</Nav>
         </Collapse>
       </Container>
     </Navbar>
