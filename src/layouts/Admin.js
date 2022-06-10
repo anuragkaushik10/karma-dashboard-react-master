@@ -64,6 +64,67 @@ const Admin = (props) => {
     return "Brand";
   };
 
+  const sideBarData = [
+    {
+      id: 1,
+      name: "Registration",
+      items: ["Patient", "Prescription"],
+    },
+    {
+      id: 2,
+      name: "Search",
+      items: [
+        "Patient",
+        "Appointment",
+        "Outreach Code",
+        "Prescription",
+        "Queue",
+      ],
+    },
+    {
+      id: 3,
+      name: "View",
+      items: [
+        "Dashboard",
+        "Doctor Allocation",
+        "Doctor Leave",
+        "Patient Queue",
+      ],
+    },
+    {
+      id: 4,
+      name: "D2D Activity",
+      items: ["D2D Activity", "D2D Activity Tracking"],
+    },
+    {
+      id: 5,
+      name: "Leave Management",
+      items: [
+        "Leave Details",
+        "Leave Application",
+        "Add Official Leaves",
+        "Leave Types Userwise",
+        "Manage User Leaves",
+        "Manage Team Leaves",
+      ],
+    },
+    {
+      id: 5,
+      name: "Healthcard",
+      items: [
+        "Healthcard Search",
+        "Healthcard Add",
+        "Healthcard Allotment",
+        "Healthcard Manage",
+      ],
+    },
+    {
+      id: 6,
+      name: "Camp",
+      items: [],
+    },
+  ];
+
   return (
     <>
       <Sidebar
@@ -84,9 +145,7 @@ const Admin = (props) => {
           {getRoutes(routes)}
           <Redirect from="*" to="/admin/index" />
         </Switch>
-        <Container fluid>
-          <AdminFooter />
-        </Container>
+        <Container fluid></Container>
       </div>
     </>
   );

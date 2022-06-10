@@ -16164,14 +16164,15 @@ button:focus, :focus {
 
 .main-label{
   color: white !important;
-  padding-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 1.3em;
 }
 /* #ff375f */
 .icons{
   color: white;
-   font-size: 2.5em; 
-   padding-bottom: 5px;
+   font-size: 2em; 
+   padding-bottom: 10px;
 }
 
 .icons:hover{
@@ -16186,7 +16187,8 @@ button:focus, :focus {
 }
 
 .small-grid-label{
-font-size: 0.6em;
+font-size: .6em;
+padding-top: -10px;
 color: white;
 }
 .main-card{
@@ -16204,6 +16206,6 @@ color: white;
     font-size: 0.8em;
   }
   .icons{
-    font-size: 3em;
+    font-size: 2em;
   }
 }
