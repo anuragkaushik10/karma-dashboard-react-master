@@ -24,6 +24,8 @@ import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import PatientForm from "views/examples/PatientForm.js";
 import PatientRegistration from "views/examples/patient/PatientRegistration";
+import DropdownComponent from "views/examples/DropdownComponent";
+import Prescription from "views/examples/Prescription";
 var routes = [
   {
     path: "/index",
@@ -79,6 +81,20 @@ var routes = [
     name: "Patient Form",
     icon: "ni ni-circle-08 text-pink",
     component: PatientRegistration,
+    layout: "/admin",
+  },
+  {
+    path: "/dropdown-component",
+    name: "Dropdown Component",
+    icon: "ni ni-circle-08 text-pink",
+    component: DropdownComponent,
+    layout: "/admin",
+  },
+  {
+    path: "/prescription",
+    name: "Prescription",
+    icon: "ni ni-circle-08 text-pink",
+    component: Prescription,
     layout: "/admin",
   },
 ];

@@ -16225,3 +16225,19 @@ color: white;
   
   }
 }
+
+
+.card-style{
+  border:1px solid #334159;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
